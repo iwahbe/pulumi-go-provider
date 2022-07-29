@@ -1,8 +1,8 @@
-module github.com/pulumi/pulumi-go-provider/examples/str
-
-go 1.18
+module github.com/pulumi/pulumi-go-provider/examples/dna-store
 
 replace github.com/pulumi/pulumi-go-provider => ../..
+
+go 1.18
 
 require (
 	github.com/blang/semver v3.5.1+incompatible

@@ -12,28 +12,4 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package resource
-
-import (
-	"context"
-	"testing"
-
-	"github.com/pulumi/pulumi-go-provider/internal/introspect"
-	"github.com/pulumi/pulumi/pkg/v3/resource/provider"
-	"github.com/stretchr/testify/assert"
-)
-
-type FooResoruce struct {
-	A string `pulumi:"A"`
-	B *int
-}
-
-func TestMarkComputed(t *testing.T) {
-	t.Parallel()
-	f := &FooResoruce{}
-
-	matcher := introspect.NewFieldMatcher(f)
-	ctx := NewContext(context.Background(), &provider.HostClient{}, "urn", matcher)
-	ctx.MarkComputed(&f.A)
-	assert.Equal(t, []string{"A"}, ctx.markedComputed)
-}
+package provider

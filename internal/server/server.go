@@ -32,8 +32,8 @@ import (
 	emptypb "google.golang.org/protobuf/types/known/emptypb"
 	"google.golang.org/protobuf/types/known/structpb"
 
-	"github.com/iwahbe/pulumi-go-provider/internal/introspect"
-	r "github.com/iwahbe/pulumi-go-provider/resource"
+	"github.com/pulumi/pulumi-go-provider/internal/introspect"
+	r "github.com/pulumi/pulumi-go-provider/resource"
 )
 
 type Server struct {
@@ -155,7 +155,7 @@ func (s *Server) Check(ctx context.Context, req *rpc.CheckRequest) (*rpc.CheckRe
 		}
 
 		checkContext := r.NewContext(ctx, s.host, resource.URN(req.Urn), introspect.NewFieldMatcher(custom))
-		failures, nErr := res.Check(checkContext, new, int(req.SequenceNumber))
+		failures, nErr := res.Check(checkContext, new, int(0))
 		if err != nil {
 			return nil, nErr
 		}
